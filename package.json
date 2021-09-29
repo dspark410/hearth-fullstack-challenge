@@ -1,0 +1,28 @@
+{
+  "name": "hearth-fullstack-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "concurrently": "^6.2.2",
+    "nodemon": "^2.0.13"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "install": "cd server && npm i && cd ../client && npm i",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"cd server && nodemon server.js\" \"npm run client\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dspark410/hearth-fullstack-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dspark410/hearth-fullstack-challenge/issues"
+  },
+  "homepage": "https://github.com/dspark410/hearth-fullstack-challenge#readme"
+}

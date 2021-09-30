@@ -102,5 +102,5 @@
 
 .grid_item:hover {
   cursor: pointer;
-  box-shadow: 0 0 3px rgb(28, 91, 143);
+  box-shadow: 0 0 5px rgb(218, 30, 30);
 }

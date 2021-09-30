@@ -1,8 +1,8 @@
 import './App.css'
-import { useState, useEffect, useRef } from 'react'
-import { BsSearch } from 'react-icons/bs'
+import { useState, useEffect } from 'react'
 import HomeInfo from './components/HomeInfo'
 import SingleHomeInfo from './components/SingleHomeInfo'
+import Input from './components/Input'
 
 function App() {
   const [homeData, setHomeData] = useState([])
@@ -19,9 +19,9 @@ function App() {
 
   // handle showing results based on user input
   const handleSubmit = (e) => {
+    e.preventDefault()
     if (inputValue === '') return
     else {
-      e.preventDefault()
       setSearchedHome({})
       setResults([...filteredData])
 
@@ -72,39 +72,15 @@ function App() {
       <h1 className='header'>RedFin San Francisco</h1>
       <p className='p'>Search For Homes Available For Sale!</p>
       <section className='form_container'>
-        <form onSubmit={handleSubmit}>
-          <div className='input_container'>
-            <input
-              autoFocus
-              className='input'
-              type='text'
-              value={inputValue}
-              onChange={handleOnChange}
-              onFocus={() => setShowAddress(true)}
-            />
-            <span className='search_icon' onClick={handleSubmit}>
-              <BsSearch
-                style={{
-                  pointerEvents: 'none',
-                  fontSize: '1.25rem',
-                  color: '#aaa',
-                }}
-              />
-            </span>
-          </div>
-        </form>
-        {showAddress ? (
-          <div className='address_container'>
-            {filteredData.slice(0, 5).map((home, i) => (
-              <div
-                className='address'
-                key={i}
-                onClick={() => handleSearchAddress(home)}>
-                {home.ADDRESS}
-              </div>
-            ))}
-          </div>
-        ) : null}
+        <Input
+          handleOnChange={handleOnChange}
+          setShowAddress={setShowAddress}
+          handleSubmit={handleSubmit}
+          inputValue={inputValue}
+          handleSearchAddress={handleSearchAddress}
+          showAddress={showAddress}
+          filteredData={filteredData}
+        />
       </section>
 
       <div className='grid_container'>

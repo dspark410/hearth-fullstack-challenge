@@ -1,5 +1,6 @@
 const express = require('express')
 const fs = require('fs')
+const path = require('path')
 const csv = require('csv-parser')
 const cors = require('cors')
 
@@ -20,6 +21,15 @@ app.get('/api/redfin/sanfrancisco', (req, res) => {
       res.status(200).json(results)
     })
 })
+
+// deploy to heroku
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('../client/build'))
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'))
+  })
+}
 
 app.listen(port, () => {
   console.log(`Listening at https://localhost:${port}`)

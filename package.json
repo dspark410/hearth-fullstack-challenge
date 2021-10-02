@@ -12,7 +12,9 @@
     "install": "cd server && npm i && cd ../client && npm i",
     "client": "npm start --prefix client",
     "dev": "concurrently \"cd server && nodemon server.js\" \"npm run client\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "cd client && npm run build",
+    "heroku-start": "cd server && node server.js"
   },
   "repository": {
     "type": "git",
